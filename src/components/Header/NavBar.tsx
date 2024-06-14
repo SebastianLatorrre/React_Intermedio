@@ -5,8 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Search from "./Search/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import NavListDrawer from "./NavListDrawer"; // Asegúrate de que la ruta es correcta
-import Logo from '../../assets/7941371-Photoroom.png'; // Importa tu logo aquí
+import NavListDrawer from "./NavListDrawer"; 
+import Logo from '../../assets/7941371-Photoroom.png'; 
 
 export type MenuItem = {
   title: string;

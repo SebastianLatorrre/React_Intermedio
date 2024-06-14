@@ -71,7 +71,7 @@ const CardItem = ({ id, img, altImg, title, description, price }: CardItemProps)
             </Button>
           </Link>
         </Box> */}
-         <Button>Add to cart</Button>
+         
       </Card>
     </Grid>
   );

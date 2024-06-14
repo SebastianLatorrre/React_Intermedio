@@ -23,7 +23,7 @@ const Home = () => {
     <Grid container maxWidth={"xl"} spacing={2} my={2} >
       {isLoading
         ? Array.from(new Array(12)).map((_, index) => [<CardSkeleton key={index + 1} />])
-        : products.map((product: any, index) => [
+        : products.map((product: any) => [
             <CardItem
             id={product.id}
             img={product.image}

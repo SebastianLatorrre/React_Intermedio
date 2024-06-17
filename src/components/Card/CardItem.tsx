@@ -36,11 +36,11 @@ const CardItem = ({ id, img, altImg, title, description, price }: CardItemProps)
         {/* Descripción y título */}
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="div" sx={{
-        display: '-webkit-box',
-        WebkitBoxOrient: 'vertical',
-        WebkitLineClamp: 1,
-        overflow: 'hidden',
-      }}>
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: 1,
+              overflow: 'hidden',
+            }}>
             {title}
           </Typography>
           <Typography

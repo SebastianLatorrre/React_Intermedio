@@ -8,7 +8,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import ProductDetail from "./Product/ProductDetail";
 import { theme } from "../style/theme";
 import Car from "../pages/Car";
+
 import { CartProvider } from "./Car/CartContext";
+import Login from "./Login/Login";
+
 
 const navLinks: MenuItem[] = [
   { title: "Home", path: "/", icon: <HomeIcon /> },
@@ -27,6 +30,7 @@ const App = () => {
           <Route path="/home" element={<Home/>} />
           <Route path="/car" element={<Car/>} />
           <Route path="/productDetail/:id" element={<ProductDetail/>}/>
+          <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </Container>

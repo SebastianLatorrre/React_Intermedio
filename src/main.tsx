@@ -9,14 +9,17 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { theme } from "./style/theme.ts";
+import { ChakraProvider } from "@chakra-ui/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CssBaseline />
     <BrowserRouter>
+    <ChakraProvider>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
+    </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

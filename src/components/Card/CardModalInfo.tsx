@@ -151,7 +151,7 @@ const CardModalInfo = ({ product }: CardModalInfoProps) => {
                   <AddIcon />
                 </IconButton>
               </Stack>
-              <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleAddToCart}>
+              <Button variant="outlined" color="secondary" sx={{ mt: 2 }} onClick={handleAddToCart}>
                 ADD TO CART
               </Button>
             </Box>

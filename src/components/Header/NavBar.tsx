@@ -73,6 +73,9 @@ const Navbar = ({ navLinks }: NavbarProps) => {
                     <List>
                       {cart.map((product) => (
                         <ListItem key={product.id}>
+                          <Box sx={{ width: '25%', height: 'auto', marginRight: 2 }}>
+                            <img src={product.image} alt={product.name} style={{ width: '100%' }} />
+                          </Box>
                           <ListItemText primary={product.name} secondary={`$${product.price}`} />
                           <IconButton edge="end" onClick={() => removeFromCart(product.id)}>
                             <DeleteIcon />
@@ -94,9 +97,9 @@ const Navbar = ({ navLinks }: NavbarProps) => {
         </Container>
       </AppBar>
 
-      <Drawer sx={{ display: { xs: "block", md: "none" } }} open={open} anchor="left" onClose={() => setOpen(false)}>
+      {/* <Drawer sx={{ display: { xs: "block", md: "none" } }} open={open} anchor="left" onClose={() => setOpen(false)}>
         <NavListDrawer navLinks={navLinks} />
-      </Drawer>
+      </Drawer> */}
     </>
   );
 };

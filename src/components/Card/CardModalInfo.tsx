@@ -11,6 +11,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../Car/CartContext'; 
 import { theme } from '../../style/theme';
+import { AddShoppingCart } from '@mui/icons-material';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': { padding: theme.spacing(2) },
@@ -62,6 +63,7 @@ const CardModalInfo = ({ product }: CardModalInfoProps) => {
       name: product.title,
       price: product.price,
       quantity: quantity,
+      image: product.image,
     };
     addToCart(itemToAdd);
     handleClose();
@@ -152,7 +154,7 @@ const CardModalInfo = ({ product }: CardModalInfoProps) => {
                 </IconButton>
               </Stack>
               <Button variant="outlined" color="secondary" sx={{ mt: 2 }} onClick={handleAddToCart}>
-                ADD TO CART
+                <AddShoppingCart/> ADD TO CART
               </Button>
             </Box>
           </Stack>

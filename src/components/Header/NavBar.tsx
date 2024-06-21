@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Search from "./Search/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import NavListDrawer from "./NavListDrawer";
+
 import Logo from '../../assets/7941371-Photoroom.png';
 import { useCart } from '../../components/Car/CartContext';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -20,7 +20,7 @@ export type NavbarProps = {
   navLinks: MenuItem[];
 };
 
-const Navbar = ({ navLinks }: NavbarProps) => {
+const Navbar = ({}: NavbarProps) => {
   const [open, setOpen] = useState<boolean>(false);
   //const [activePage, setActivePage] = useState("/");
   const location = useLocation();

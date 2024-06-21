@@ -18,7 +18,6 @@
     "build": {
       "env": {
         "CI": "false"
-      },
-      "installCommand": "pnpm install --no-frozen-lockfile"
+      }
     }
   }

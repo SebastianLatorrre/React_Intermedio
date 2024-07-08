@@ -10,23 +10,27 @@ import {
   Heading,
   useToast,
 } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     // Aquí puedes agregar la lógica para manejar el login
-    if (email === 'admin@example.com' && password === 'password') {
+    if (email === 'juan@gmail.com' && password === '123456') {
+
       toast({
-        title: 'Login successful.',
+        title: 'Login successful.+++',
         description: "You've successfully logged in.",
         status: 'success',
         duration: 5000,
         isClosable: true,
       });
+      navigate('/ProductsPage');
     } else {
       toast({
         title: 'Login failed.',

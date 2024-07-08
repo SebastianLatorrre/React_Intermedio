@@ -31,7 +31,7 @@ export type CardModalInfoProps = {
 const CardModalInfo = ({ product }: CardModalInfoProps) => {
   const [open, setOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useCart();
+  const {  addToCart } = useCart();
   const navigate = useNavigate();
 
   const handleClickOpen = () => {

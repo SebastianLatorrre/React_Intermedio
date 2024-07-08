@@ -5,11 +5,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Search from "./Search/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-
 import Logo from '../../assets/7941371-Photoroom.png';
 import { useCart } from '../../components/Car/CartContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+
 export type MenuItem = {
   title: string;
   path: string;
@@ -22,19 +24,31 @@ export type NavbarProps = {
 
 const Navbar = ({}: NavbarProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  //const [activePage, setActivePage] = useState("/");
   const location = useLocation();
   const navigate = useNavigate();
+  const { cart, addToCart, removeFromCart } = useCart();
   const handleViewCar = () => {
     navigate(`/car`);
-  }
+  };
   const handleViewLogin = () => {
     navigate(`/login`);
-  }
+  };
 
+  const handleIncreaseQuantity = (productId: number) => {
+    const product = cart.find(item => item.id === productId);
+    if (product) {
+      addToCart({ ...product, quantity: 1 }); 
+    }
+  };
+
+  const handleDecreaseQuantity = (productId: number) => {
+    const product = cart.find(item => item.id === productId);
+    if (product && product.quantity > 1) {
+      addToCart({ ...product, quantity: -1 }); 
+    }
+  };
+  
   useEffect(() => setOpen(false), [location]);
-  const { cart, removeFromCart } = useCart();
-  // const [open, setOpen] = useState(false);
   return (
     <>
       <AppBar position="static" sx={{ backgroundColor: "#131921" }}>
@@ -53,11 +67,6 @@ const Navbar = ({}: NavbarProps) => {
             </Typography>
             <Search />
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              {/* <IconButton color="inherit">
-                <Badge badgeContent={4} color="error">
-                  <ShoppingCartIcon  onClick={handleViewCar}/>
-                </Badge>
-              </IconButton> */}
               <IconButton color="inherit" onClick={() => setOpen(true)}>
                 <ShoppingCartIcon />
                 <Typography variant="body1" sx={{ ml: 1 }}>
@@ -77,6 +86,15 @@ const Navbar = ({}: NavbarProps) => {
                             <img src={product.image} alt={product.name} style={{ width: '100%' }} />
                           </Box>
                           <ListItemText primary={product.name} secondary={`$${product.price}`} />
+                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <IconButton onClick={() => handleDecreaseQuantity(product.id)}>
+                              <RemoveIcon />
+                            </IconButton>
+                            <Typography>{product.quantity}</Typography>
+                            <IconButton onClick={() => handleIncreaseQuantity(product.id)}>
+                              <AddIcon />
+                            </IconButton>
+                          </Box>
                           <IconButton edge="end" onClick={() => removeFromCart(product.id)}>
                             <DeleteIcon />
                           </IconButton>
@@ -90,16 +108,12 @@ const Navbar = ({}: NavbarProps) => {
                 </Box>
               </Drawer>
               <IconButton color="inherit">
-                <AccountCircle onClick={handleViewLogin}/>
+                <AccountCircle onClick={handleViewLogin} />
               </IconButton>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
-
-      {/* <Drawer sx={{ display: { xs: "block", md: "none" } }} open={open} anchor="left" onClose={() => setOpen(false)}>
-        <NavListDrawer navLinks={navLinks} />
-      </Drawer> */}
     </>
   );
 };

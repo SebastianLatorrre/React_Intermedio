@@ -1,4 +1,4 @@
-import  { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
 export type Product = {
   id: number;
@@ -7,7 +7,6 @@ export type Product = {
   quantity: number;
   image: string;
 };
-
 
 type CartContextType = {
   cart: Product[];
@@ -21,7 +20,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Product[]>([]);
 
   const addToCart = (product: Product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    setCart((prevCart) => {
+      const existingProductIndex = prevCart.findIndex(item => item.id === product.id);
+      if (existingProductIndex !== -1) {
+        const updatedCart = [...prevCart];
+        updatedCart[existingProductIndex].quantity += product.quantity;
+        return updatedCart;
+      }
+      return [...prevCart, product];
+    });
   };
 
   const removeFromCart = (productId: number) => {

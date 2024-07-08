@@ -22,14 +22,14 @@ const Cart = () => {
   const handleIncreaseQuantity = (productId: number) => {
     const product = cart.find(item => item.id === productId);
     if (product) {
-      addToCart({ ...product, quantity: product.quantity + 1 });
+      addToCart({ ...product, quantity: + 1 });
     }
   };
 
   const handleDecreaseQuantity = (productId: number) => {
     const product = cart.find(item => item.id === productId);
     if (product && product.quantity > 1) {
-      addToCart({ ...product, quantity: product.quantity - 1 });
+      addToCart({ ...product, quantity: - 1 });
     }
   };
 

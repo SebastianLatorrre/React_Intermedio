@@ -6,7 +6,7 @@ import CardSkeleton from "../components/Card/CardSkeleton";
 const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [products, setProducts] = useState([]);
-
+  const [categories, setCategories] = useState<string[]>([]);
   const fetchProducts = useCallback(async () => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
@@ -18,7 +18,21 @@ const Home = () => {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
+// Fetches categories
+// const fetchCategories = useCallback(async () => {
+//   try {
+//     const response = await fetch('https://fakestoreapi.com/products/categories');
+//     const dataC = await response.json();
+//     setCategories(dataC);
+//     console.log('Categories:', dataC); // Log categories to console
+//   } catch (error) {
+//     console.error('Error fetching categories:', error);
+//   }
+// }, []);
 
+// useEffect(() => {
+//   fetchCategories();
+// }, [fetchCategories]);
   return (
     <Grid container maxWidth={"xl"} spacing={2} my={2} >
       {isLoading

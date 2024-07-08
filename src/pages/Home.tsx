@@ -6,7 +6,7 @@ import CardSkeleton from "../components/Card/CardSkeleton";
 const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState<string[]>([]);
+
   const fetchProducts = useCallback(async () => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
